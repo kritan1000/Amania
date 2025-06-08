@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SignUpPage.css';
 
   function SignupPage() {
   const [formData, setFormData] = useState({
@@ -25,10 +26,10 @@ import React, { useState } from 'react';
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Reset error
+  
     setError('');
     
-    // Validation
+   
     if (!formData.firstName || !formData.lastName || !formData.email || 
         !formData.password || !formData.confirmPassword) {
       setError('Please fill in all required fields');
@@ -55,10 +56,10 @@ import React, { useState } from 'react';
       return;
     }
     
-    // Success
+   
     alert('Account created successfully! Welcome to Amania!');
     
-    // Reset form
+ 
     setFormData({
       firstName: '',
       lastName: '',
@@ -73,26 +74,23 @@ import React, { useState } from 'react';
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        {/* Logo/Brand */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">AMANIA</h1>
           <p className="text-gray-600">Fashion for Everyone</p>
         </div>
 
-        {/* Signup Form */}
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
             Create Account
           </h2>
 
-          {/* Error Message */}
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
               {error}
             </div>
           )}
 
-          {/* Name Fields Row */}
+         
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-700 text-sm font-medium mb-2">
@@ -122,7 +120,7 @@ import React, { useState } from 'react';
             </div>
           </div>
 
-          {/* Email Input */}
+          
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
               Email Address *
@@ -137,7 +135,7 @@ import React, { useState } from 'react';
             />
           </div>
 
-          {/* Phone Input */}
+       
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
               Phone Number
@@ -152,7 +150,7 @@ import React, { useState } from 'react';
             />
           </div>
 
-          {/* Password Input */}
+      
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
               Password *
@@ -166,17 +164,11 @@ import React, { useState } from 'react';
                 className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
                 placeholder="Create a password"
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showPassword ? '🙈' : '👁️'}
-              </button>
+             
             </div>
           </div>
 
-          {/* Confirm Password Input */}
+    
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
               Confirm Password *
@@ -190,38 +182,11 @@ import React, { useState } from 'react';
                 className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
                 placeholder="Confirm your password"
               />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showConfirmPassword ? '🙈' : '👁️'}
-              </button>
+              
             </div>
           </div>
 
-          {/* Terms and Conditions */}
-          <div className="flex items-start">
-            <input
-              type="checkbox"
-              name="agreeToTerms"
-              checked={formData.agreeToTerms}
-              onChange={handleInputChange}
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1"
-            />
-            <span className="ml-2 text-sm text-gray-600">
-              I agree to the{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-800">
-                Terms and Conditions
-              </a>{' '}
-              and{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-800">
-                Privacy Policy
-              </a>
-            </span>
-          </div>
 
-          {/* Create Account Button */}
           <button
             type="button"
             onClick={handleSubmit}
@@ -230,7 +195,7 @@ import React, { useState } from 'react';
             Create Account
           </button>
 
-          {/* Sign In Link */}
+         
           <div className="text-center pt-4">
             <p className="text-gray-600 text-sm">
               Already have an account?{' '}

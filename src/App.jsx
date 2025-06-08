@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// Import the components with explicit paths
 const LoginPage = React.lazy(() => import('./LoginPage.jsx'));
-const SignupPage = React.lazy(() => import('./SignupPage.jsx'));
-
+const SignupPage = React.lazy(() => import('./SignUpPage.jsx'));
 function App() {
-  const [currentPage, setCurrentPage] = useState('login'); // 'login' or 'signup'
+  const [currentPage, setCurrentPage] = useState('Login'); 
 
   const switchToSignup = () => {
-    setCurrentPage('signup');
+    setCurrentPage('Signup');
   };
 
   const switchToLogin = () => {
