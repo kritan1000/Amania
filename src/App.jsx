@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
+import LandingPage from './LandingPage';
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
 import './App.css';
 
-const LoginPage = React.lazy(() => import('./LoginPage.jsx'));
-const SignupPage = React.lazy(() => import('./SignUpPage.jsx'));
-function App() {
-  const [currentPage, setCurrentPage] = useState('Login'); 
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('landing');
 
-  const switchToSignup = () => {
-    setCurrentPage('Signup');
-  };
-
-  const switchToLogin = () => {
-    setCurrentPage('login');
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'login':
+        return <LoginPage setCurrentPage={setCurrentPage} />;
+      case 'signup':
+        return <SignupPage setCurrentPage={setCurrentPage} />;
+      default:
+        return <LandingPage setCurrentPage={setCurrentPage} />;
+    }
   };
 
   return (
-    <div className="App">
-      <React.Suspense fallback={<div>Loading...</div>}>
-        {currentPage === 'login' ? (
-          <LoginPage onSwitchToSignup={switchToSignup} />
-        ) : (
-          <SignupPage onSwitchToLogin={switchToLogin} />
-        )}
-      </React.Suspense>
+    <div className="app">
+      {renderPage()}
     </div>
   );
-}
+};
 
 export default App;

@@ -1,212 +1,113 @@
 import React, { useState } from 'react';
-import './SignUpPage.css';
 
-  function SignupPage() {
+const SignupPage = ({ setCurrentPage }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    phone: '',
-    agreeToTerms: false
+    confirmPassword: ''
   });
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [error, setError] = useState('');
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-  
-    setError('');
-    
-   
-    if (!formData.firstName || !formData.lastName || !formData.email || 
-        !formData.password || !formData.confirmPassword) {
-      setError('Please fill in all required fields');
-      return;
-    }
-    
-    if (!formData.email.includes('@')) {
-      setError('Please enter a valid email address');
-      return;
-    }
-    
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-    
+    // Handle signup logic here
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      alert('Passwords do not match!');
       return;
     }
-    
-    if (!formData.agreeToTerms) {
-      setError('Please agree to the terms and conditions');
-      return;
-    }
-    
-   
-    alert('Account created successfully! Welcome to Amania!');
-    
- 
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      phone: '',
-      agreeToTerms: false
-    });
+    console.log('Signup attempt:', formData);
+    alert('Account created successfully! You can now sign in.');
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">AMANIA</h1>
-          <p className="text-gray-600">Fashion for Everyone</p>
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="auth-header">
+          <h1>Create Account</h1>
+          <p>Join Amania and start shopping</p>
         </div>
-
-        <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
-            Create Account
-          </h2>
-
-          {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-              {error}
-            </div>
-          )}
-
-         
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                First Name *
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="First name"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                Last Name *
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Last name"
-              />
-            </div>
+        
+        <div className="auth-form">
+          <div className="form-group">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              placeholder="Enter your first name"
+            />
           </div>
-
           
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              Email Address *
-            </label>
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              placeholder="Enter your last name"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
             <input
               type="email"
+              id="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Enter your email"
             />
           </div>
-
-       
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              Phone Number
-            </label>
+          
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
             <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
               onChange={handleInputChange}
-              className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Enter your phone number"
+              placeholder="Create a password"
             />
           </div>
-
-      
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              Password *
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
-                placeholder="Create a password"
-              />
-             
-            </div>
+          
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              placeholder="Confirm your password"
+            />
           </div>
-
-    
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              Confirm Password *
-            </label>
-            <div className="relative">
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
-                placeholder="Confirm your password"
-              />
-              
-            </div>
-          </div>
-
-
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 font-medium"
-          >
+          
+          <button onClick={handleSubmit} className="auth-btn">
             Create Account
           </button>
-
-         
-          <div className="text-center pt-4">
-            <p className="text-gray-600 text-sm">
-              Already have an account?{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-800 font-medium">
-                Sign in here
-              </a>
-            </p>
-          </div>
+        </div>
+        
+        <div className="auth-footer">
+          <p>Already have an account? <a href="#" onClick={() => setCurrentPage('login')}>Sign in</a></p>
+          <p><a href="#" onClick={() => setCurrentPage('landing')}>Back to Home</a></p>
         </div>
       </div>
     </div>
   );
-}
-export default SignupPage;  
+};
+
+export default SignupPage;
