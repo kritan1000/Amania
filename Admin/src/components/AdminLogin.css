@@ -103,7 +103,7 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  padding: 12px 12px 12px 50px; /* Increased left padding for icon */
+  padding: 12px 12px; /* Removed left padding since no icons */
   border: 2px solid #d2b48c;
   border-radius: 6px;
   font-size: 16px;
@@ -128,21 +128,9 @@ body {
   font-family: 'Georgia', serif;
 }
 
-.input-icon {
-  position: absolute;
-  left: 15px; /* Adjusted position */
-  top: 50%;
-  transform: translateY(-50%);
-  color: #8b4513;
-  z-index: 1;
-  pointer-events: none;
-  width: 20px;
-  height: 20px;
-}
-
 .password-toggle {
   position: absolute;
-  right: 15px; /* Adjusted position */
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -279,11 +267,6 @@ body {
   
   .input-wrapper input {
     font-size: 16px; /* Prevents zoom on iOS */
-    padding-left: 45px; /* Slightly less padding on mobile */
-  }
-  
-  .input-icon {
-    left: 12px; /* Adjusted for mobile */
   }
   
   .admin-login-btn {
@@ -312,15 +295,11 @@ body {
   
   .input-wrapper input {
     height: 44px;
-    padding: 10px 10px 10px 42px; /* Adjusted padding */
-  }
-  
-  .input-icon {
-    left: 11px; /* Adjusted position */
+    padding: 10px 10px; /* Adjusted padding */
   }
   
   .password-toggle {
-    right: 11px; /* Adjusted position */
+    right: 11px;
   }
 }
 

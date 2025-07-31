@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { User, Lock, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import './AdminLogin.css';
 
 const AdminLogin = () => {
@@ -55,7 +55,6 @@ const AdminLogin = () => {
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <div className="input-wrapper">
-                <User className="input-icon" size={20} />
                 <input
                   type="email"
                   id="email"
@@ -71,7 +70,6 @@ const AdminLogin = () => {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <div className="input-wrapper">
-                <Lock className="input-icon" size={20} />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password"
