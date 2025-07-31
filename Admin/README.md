@@ -1,3 +1,8 @@
+<!--
+README for Admin panel
+Describes setup and usage for admin React app
+-->
+
 # Amania Clothing Store - Admin Panel
 
 This is the admin panel for the Amania Clothing Store website, built with React and Vite.

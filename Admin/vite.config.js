@@ -1,3 +1,5 @@
+// vite.config.js for Admin panel
+// Vite configuration for admin React app
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
