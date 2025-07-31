@@ -1,3 +1,9 @@
+/**
+ * Main Server File
+ * Express server setup with admin routes integration
+ * Handles CORS, JSON parsing, and database synchronization
+ */
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
