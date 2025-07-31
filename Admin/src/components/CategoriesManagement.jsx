@@ -1,3 +1,9 @@
+/**
+ * Categories Management Component
+ * Allows admins to add and view product categories
+ * Provides form validation and error handling
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CategoriesManagement.css';
