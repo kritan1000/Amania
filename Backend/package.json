@@ -1,8 +1,3 @@
-/**
- * Backend Package Configuration
- * Dependencies for Express server with authentication and database
- */
-
 {
   "name": "amania-backend",
   "version": "1.0.0",
