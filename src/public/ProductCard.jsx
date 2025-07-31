@@ -1,5 +1,11 @@
+/**
+ * Product Card Component
+ * Individual product display with add to cart functionality
+ * Features product image, price, and action buttons
+ */
+
 import React from 'react';
-import '../styles/ProductCard.css';
+import '../Styles/ProductCard.css';
 import { addToCart } from '../utlis/addToCart';
 
 function ProductCard({ product }) {
