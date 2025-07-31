@@ -1,7 +1,14 @@
+/**
+ * Signup Component
+ * User registration interface with form validation
+ * Includes password confirmation and error handling
+ */
+
 import React, { useState } from 'react';
-import { User, Mail, Lock, Eye, EyeOff, Phone } from 'lucide-react';
-import '../styles/Signup.css';
-import {auth} from "../utlis/axios"
+import axios from 'axios';
+import { User, Lock, Eye, EyeOff, Mail, Phone } from 'lucide-react';
+import '../Styles/Signup.css';
+import { auth } from '../utlis/axios';
 
 const Signup = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
