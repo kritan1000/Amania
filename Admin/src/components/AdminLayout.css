@@ -1,3 +1,9 @@
+/**
+ * Admin Layout CSS Styles
+ * Shared layout with navigation sidebar and responsive design
+ * Includes navbar, sidebar, and main content area styling
+ */
+
 .admin-layout {
   min-height: 100vh;
   background: #f8f9fa;
