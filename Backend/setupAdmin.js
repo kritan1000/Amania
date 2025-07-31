@@ -1,3 +1,9 @@
+/**
+ * Admin Setup Script
+ * Creates default admin users in the database
+ * Includes both default admin and custom admin credentials
+ */
+
 const bcrypt = require('bcrypt');
 const { db } = require('./config/db');
 const Admin = require('./model/adminModel');
