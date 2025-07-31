@@ -4,70 +4,44 @@
  * Includes dropdown menus and responsive design
  */
 
-import React, { use, useEffect, useState } from 'react';
-import { ShoppingCart, User, Home, LogIn, Shirt } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ShoppingCart, User, Home, LogIn, Shirt, Settings, LogOut } from 'lucide-react';
 import '../Styles/Navbar.css';
 import { category } from '../utlis/axios';
 import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
+import { useAuth } from '../context/AuthContext';
 
-const Navbar = ({ currentPage, onNavigate }) => {
+const Navbar = ({ currentPage }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   
-  // Check authentication status on component mount
-  useEffect(() => {
-    const checkAuthStatus = () => {
-      const storedUser = localStorage.getItem("user");
-      const storedToken = localStorage.getItem("token");
-      
-      if (storedUser && storedToken) {
-        try {
-          const userData = JSON.parse(storedUser);
-          setUser(userData);
-          setIsLoggedIn(true);
-        } catch (error) {
-          // Invalid JSON in localStorage, clear it
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-          setUser(null);
-          setIsLoggedIn(false);
-        }
-      } else {
-        setUser(null);
-        setIsLoggedIn(false);
-      }
-    };
-    
-    checkAuthStatus();
-  }, []);
+  const { user, isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-      const token = localStorage.getItem('token');
-        const response = await category.get('/',{
-        headers: { Authorization: `Bearer ${token}` }
-      });
+        const token = localStorage.getItem('token');
+        const response = await category.get('/', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         console.log("Categories fetched:", response.data);
         setCategories(response.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
-      }}
-      fetchCategories();
+      }
+    };
+    fetchCategories();
   }, []);
-  
-  const navigate = useNavigate();
   
   const onCartClear = () => {
     setCartModalOpen(false);
     localStorage.removeItem("cartItems");
-    window.location.reload(); // or use onNavigate('home')
+    window.location.reload();
   }
   
   const onCartOpen = () => {
@@ -82,12 +56,15 @@ const Navbar = ({ currentPage, onNavigate }) => {
   }
   
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    setUser(null);
-    setIsLoggedIn(false);
+    logout();
     setUserModalOpen(false);
-    window.location.reload(); // or use onNavigate('home')
+    navigate('/');
+  };
+
+  const handleProfileClick = () => {
+    setUserModalOpen(false);
+    // TODO: Navigate to profile page when created
+    alert('Profile page coming soon!');
   };
 
   return (
@@ -167,19 +144,30 @@ const Navbar = ({ currentPage, onNavigate }) => {
                 </li>
               </>
             ) : (
-              <li>
-                <button className="nav-link" onClick={() => setUserModalOpen(true)}>
+              <li style={{ position: 'relative' }}>
+                <button className="nav-link" onClick={() => setUserModalOpen(!userModalOpen)}>
                   <User size={18} />
                   {user?.fullname || user?.firstName}
                 </button>
                 {userModalOpen && (
                   <div className="user-modal">
-                    <div >
+                    <div className="user-info">
                       <strong>{user?.fullname || `${user?.firstName} ${user?.lastName}`}</strong>
-                      <div>{user?.email}</div>
+                      <div className="user-email">{user?.email}</div>
                     </div>
-                    <button className="btn btn-outline"  onClick={handleLogout}>Logout</button>
-                    <button className="btn btn-outline"  onClick={() => setUserModalOpen(false)}>Close</button>
+                    <div className="user-actions">
+                      <button className="btn btn-outline profile-btn" onClick={handleProfileClick}>
+                        <Settings size={16} />
+                        Profile
+                      </button>
+                      <button className="btn btn-outline logout-btn" onClick={handleLogout}>
+                        <LogOut size={16} />
+                        Logout
+                      </button>
+                    </div>
+                    <button className="btn btn-outline close-btn" onClick={() => setUserModalOpen(false)}>
+                      Close
+                    </button>
                   </div>
                 )}
               </li>

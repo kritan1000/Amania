@@ -12,6 +12,7 @@ import Signup from './public/Signup';
 import Products from './public/Products';
 import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom';
 import HomeLayout from './public/HomeLayout';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
     const router = createBrowserRouter([
@@ -44,8 +45,9 @@ children: [
   ]);
   
   return (
-    <RouterProvider router={router}/>
-    
+    <AuthProvider>
+      <RouterProvider router={router}/>
+    </AuthProvider>
   );
 }
 

@@ -69,6 +69,90 @@
   background-color: #1e7b1e !important;
 }
 
+/* User Modal Styles */
+.user-modal {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  min-width: 250px;
+  z-index: 1001;
+  margin-top: 8px;
+}
+
+.user-info {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-info strong {
+  display: block;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.user-email {
+  color: #666;
+  font-size: 14px;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.profile-btn, .logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.profile-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #8b4513;
+  color: #8b4513;
+}
+
+.logout-btn:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.close-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  color: #666;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
@@ -83,5 +167,10 @@
   
   .nav-logo h2 {
     font-size: 24px;
+  }
+
+  .user-modal {
+    right: -50px;
+    min-width: 200px;
   }
 }

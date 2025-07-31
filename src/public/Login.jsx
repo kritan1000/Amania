@@ -10,6 +10,7 @@ import { User, Lock, Eye, EyeOff } from 'lucide-react';
 import '../styles/Login.css';
 import { auth } from '../utlis/axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
   
   const handleChange = (e) => {
     setFormData({
@@ -32,12 +34,14 @@ const Login = () => {
     try {
       const response = await auth.post("/login", formData);
       const data = response.data;
-      localStorage.setItem("user", JSON.stringify({
+      
+      // Use the login function from context
+      login({
         fullname: data.fullname,
         user_id: data.user_id,
         email: data.email,
-      }));
-      localStorage.setItem("token", data.token);
+      }, data.token);
+      
       navigate('/'); // Navigate to home page
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
