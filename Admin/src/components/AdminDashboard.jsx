@@ -1,3 +1,9 @@
+/**
+ * Admin Dashboard Component
+ * Provides overview statistics and quick actions for admin users
+ * Displays total products and categories with navigation
+ */
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
