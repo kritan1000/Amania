@@ -1,3 +1,8 @@
+/**
+ * Admin Package Configuration
+ * Dependencies for React admin panel with routing and HTTP client
+ */
+
 {
   "name": "admin",
   "private": true,
