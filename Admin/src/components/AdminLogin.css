@@ -103,7 +103,7 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  padding: 12px 12px 12px 45px;
+  padding: 12px 12px 12px 50px; /* Increased left padding for icon */
   border: 2px solid #d2b48c;
   border-radius: 6px;
   font-size: 16px;
@@ -130,17 +130,19 @@ body {
 
 .input-icon {
   position: absolute;
-  left: 12px;
+  left: 15px; /* Adjusted position */
   top: 50%;
   transform: translateY(-50%);
   color: #8b4513;
   z-index: 1;
   pointer-events: none;
+  width: 20px;
+  height: 20px;
 }
 
 .password-toggle {
   position: absolute;
-  right: 12px;
+  right: 15px; /* Adjusted position */
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -152,6 +154,8 @@ body {
   align-items: center;
   justify-content: center;
   transition: color 0.3s ease;
+  width: 20px;
+  height: 20px;
 }
 
 .password-toggle:hover {
@@ -275,6 +279,11 @@ body {
   
   .input-wrapper input {
     font-size: 16px; /* Prevents zoom on iOS */
+    padding-left: 45px; /* Slightly less padding on mobile */
+  }
+  
+  .input-icon {
+    left: 12px; /* Adjusted for mobile */
   }
   
   .admin-login-btn {
@@ -303,15 +312,15 @@ body {
   
   .input-wrapper input {
     height: 44px;
-    padding: 10px 10px 10px 40px;
+    padding: 10px 10px 10px 42px; /* Adjusted padding */
   }
   
   .input-icon {
-    left: 10px;
+    left: 11px; /* Adjusted position */
   }
   
   .password-toggle {
-    right: 10px;
+    right: 11px; /* Adjusted position */
   }
 }
 
