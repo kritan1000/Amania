@@ -1,12 +1,72 @@
-# React + Vite
+# Amania Clothing Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A complete e-commerce platform with admin panel for clothing store management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### User Features
+- Product browsing and search
+- User authentication and registration
+- Shopping cart functionality
+- Responsive design
 
-## Expanding the ESLint configuration
+### Admin Features
+- Secure admin login system
+- Dashboard with statistics
+- Product management (CRUD operations)
+- Category management
+- Modern responsive admin interface
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+- React 19
+- Vite
+- CSS3 with modern design patterns
+- Lucide React icons
+
+### Backend
+- Node.js
+- Express.js
+- PostgreSQL
+- Sequelize ORM
+- JWT authentication
+- bcrypt for password hashing
+
+## Setup Instructions
+
+### Backend Setup
+1. Navigate to Backend directory
+2. Install dependencies: `npm install`
+3. Set up environment variables
+4. Run database setup: `node setupAdmin.js`
+5. Start server: `npm start`
+
+### Admin Panel Setup
+1. Navigate to Admin directory
+2. Install dependencies: `npm install`
+3. Start development server: `npm run dev`
+
+### Default Admin Credentials
+- Email: `kritannepal11@gmail.com`
+- Password: `kritan12345`
+
+## Project Structure
+
+```
+amania/
+├── Admin/          # Admin panel frontend
+├── Backend/        # API server
+└── src/           # Main user frontend
+```
+
+## API Endpoints
+
+### Admin Endpoints
+- `POST /api/admin/login` - Admin authentication
+- `GET /api/admin/categories` - Get all categories
+- `POST /api/admin/categories` - Add new category
+- `GET /api/admin/products` - Get all products
+- `POST /api/admin/products` - Add new product
+- `PUT /api/admin/products/:id` - Update product
+- `DELETE /api/admin/products/:id` - Delete product
