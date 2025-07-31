@@ -1,3 +1,9 @@
+/**
+ * Products Management CSS Styles
+ * Product form and grid layout with edit/delete functionality
+ * Responsive design with card-based product display
+ */
+
 .products-container {
   padding: 2rem;
   background: #f8f9fa;
