@@ -1,7 +1,15 @@
+/**
+ * Product Card CSS Styles
+ * Individual product card styling with hover effects
+ * Features responsive design and action buttons
+ */
+
 .product-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 .product-card img {
   width: 100%;

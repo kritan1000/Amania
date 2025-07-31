@@ -1,0 +1,22 @@
+[33mdaff6a8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m chore: Update main package configuration with latest dependencies
+[33m2dfd1e2[m chore: Add backend package configuration with Express and database dependencies
+[33mfc8f625[m chore: Add admin package configuration with React dependencies
+[33m712293f[m style: Add admin layout CSS with responsive sidebar and navigation
+[33m824c940[m style: Add products management CSS with form and card grid layout
+[33mc93ee4c[m style: Add categories management CSS with form and grid layout
+[33mef2cc78[m style: Add admin dashboard CSS with statistics grid layout
+[33mbeda164[m style: Add admin login CSS with classic desktop-first design
+[33m0e1763f[m feat: Add database configuration with Sequelize and PostgreSQL setup
+[33mf296fcf[m feat: Add JWT token verification middleware for protected routes
+[33m9bc4357[m feat: Add main server setup with admin routes and database configuration
+[33m8f88ff3[m feat: Add admin setup script with multiple admin user creation
+[33m847b9f0[m feat: Add main app component with routing and protected routes
+[33m5727053[m feat: Add admin layout with shared navigation and responsive sidebar
+[33m2814bbc[m feat: Add products management with full CRUD operations and confirmation dialogs
+[33mb61089b[m feat: Add categories management with form validation and error handling
+[33ma3d9317[m feat: Add admin dashboard with statistics and quick action buttons
+[33mbbf6970[m feat: Add admin login component with classic CSS styling and responsive design
+[33mdc8091d[m feat: Add admin routes with protected endpoints and authentication middleware
+[33mc597ecc[m feat: Add comprehensive admin controller with authentication and CRUD operations
+[33md45fc05[m docs: Update README with comprehensive project documentation
+[33mc9258bd[m[33m ([m[1;31morigin/master[m[33m)[m Add complete admin panel system with login, dashboard, and product management

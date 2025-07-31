@@ -1,3 +1,9 @@
+/**
+ * Login CSS Styles
+ * User login page styling with form validation
+ * Features responsive design and password visibility toggle
+ */
+
 .login-page {
   min-height: 100vh;
   width: 100vw;
