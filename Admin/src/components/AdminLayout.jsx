@@ -1,3 +1,9 @@
+/**
+ * Admin Layout Component
+ * Provides shared navigation and layout for all admin pages
+ * Includes sidebar navigation and logout functionality
+ */
+
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './AdminLayout.css';
