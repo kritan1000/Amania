@@ -98,45 +98,76 @@
   padding: 0;
 }
 
-.login-btn {
+.forgot-password-link {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #8b4513;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.link-button:hover {
+  color: #654321;
+}
+
+.btn {
   width: 100%;
-  padding: 15px;
-  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Times New Roman', serif;
+}
+
+.login-btn {
   background-color: #8b4513;
-  border-color: #8b4513;
-  margin-top: 10px;
+  color: white;
+  margin-bottom: 20px;
 }
 
 .login-btn:hover {
   background-color: #654321;
-  border-color: #654321;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
 }
 
 .login-footer {
   text-align: center;
+  border-top: 1px solid #e2e8f0;
   padding-top: 20px;
-  border-top: 1px solid #d2b48c;
 }
 
 .login-footer p {
-  margin-bottom: 15px;
   color: #666;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
 .login-footer .btn {
-  padding: 12px 30px;
+  background-color: transparent;
+  color: #8b4513;
+  border: 2px solid #8b4513;
 }
 
 @media (max-width: 480px) {
   .login-page {
     padding: 20px 10px;
   }
-  
+
   .login-container {
-    padding: 30px 25px;
+    padding: 30px 20px;
   }
-  
+
   .login-header h1 {
     font-size: 28px;
   }

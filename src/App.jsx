@@ -10,6 +10,8 @@ import Homepage from './public/Homepage';
 import Login from './public/Login';
 import Signup from './public/Signup';
 import Products from './public/Products';
+import ForgotPassword from './public/ForgotPassword';
+import ResetPassword from './public/ResetPassword';
 import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom';
 import HomeLayout from './public/HomeLayout';
 import { AuthProvider } from './context/AuthContext';
@@ -31,6 +33,14 @@ children: [
         {
           path: 'signup',
           element: <Signup />,
+        },
+        {
+          path: 'forgot-password',
+          element: <ForgotPassword />,
+        },
+        {
+          path: 'reset-password',
+          element: <ResetPassword />,
         },
         {
           path: 'products/:category',

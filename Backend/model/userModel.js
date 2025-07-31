@@ -32,6 +32,14 @@ const User = db.define("User", {
   otp: {
     type: DataTypes.INTEGER,
   },
+  resetToken: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  resetTokenExpiry: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
 });
 
 module.exports = User;
