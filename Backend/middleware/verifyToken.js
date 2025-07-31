@@ -1,3 +1,9 @@
+/**
+ * JWT Token Verification Middleware
+ * Validates JWT tokens for protected routes
+ * Extracts user information from token payload
+ */
+
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
