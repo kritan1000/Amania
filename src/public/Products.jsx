@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import ProductCard from '../public/ProductCard';
-import '../styles/Products.css';
+/**
+ * Products Component
+ * Product listing page with category filtering
+ * Displays products in grid layout with search functionality
+ */
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../Styles/Products.css';
+import ProductCard from './ProductCard';
 
 function Products({ addToCart, category }) {
   const [products, setProducts] = useState([]);
