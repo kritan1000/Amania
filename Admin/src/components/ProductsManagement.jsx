@@ -1,3 +1,9 @@
+/**
+ * Products Management Component
+ * Provides full CRUD operations for products
+ * Includes edit, delete functionality with confirmation dialogs
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ProductsManagement.css';
