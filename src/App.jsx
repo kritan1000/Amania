@@ -1,3 +1,9 @@
+/**
+ * Main App Component
+ * User interface for the Amania clothing store
+ * Handles navigation between different pages
+ */
+
 import React, { useState } from 'react';
 import Navbar from './public/Navbar';
 import Homepage from './public/Homepage';
