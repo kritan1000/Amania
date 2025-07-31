@@ -1,0 +1,21 @@
+.cart{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f5f3f0;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+}
+.cart-item {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+.cart-item img {
+  width: 100px;
+}

@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+import Navbar from './public/Navbar';
+import Homepage from './public/Homepage';
+import Login from './public/Login';
+import Signup from './public/Signup';
+import Products from './public/Products';
+import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom';
+import HomeLayout from './public/HomeLayout';
+
+function App() {
+    const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <HomeLayout />,
+children: [
+        {
+          index: true,
+          element: <Homepage />,
+        },
+        {
+          path: 'login',
+          element: <Login />,
+        },
+        {
+          path: 'signup',
+          element: <Signup />,
+        },
+        {
+          path: 'products/:category',
+          element: <Products />,
+        },
+        {
+          path: 'products',
+          element: <Products />,
+        }
+        ]
+    },
+  ]);
+  
+  return (
+    <RouterProvider router={router}/>
+    
+  );
+}
+
+export default App;
