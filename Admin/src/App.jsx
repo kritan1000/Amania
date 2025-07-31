@@ -1,3 +1,9 @@
+/**
+ * Admin App Component
+ * Main application component with routing setup
+ * Includes protected routes and authentication checks
+ */
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AdminLogin from './components/AdminLogin';
