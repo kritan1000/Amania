@@ -19,4 +19,14 @@ const verifyToken = require("../middleware/verifyToken");
 // Admin authentication routes
 router.post("/login", adminLogin);
 
+// Category management routes (protected)
+router.post("/categories", verifyToken, addCategory);
+router.get("/categories", verifyToken, getAllCategories);
+
+// Product management routes (protected)
+router.post("/products", verifyToken, addProduct);
+router.get("/products", verifyToken, getAllProducts);
+router.put("/products/:id", verifyToken, updateProduct);
+router.delete("/products/:id", verifyToken, deleteProduct);
+
 module.exports = router; 
