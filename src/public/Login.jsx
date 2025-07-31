@@ -1,3 +1,9 @@
+/**
+ * Login Component
+ * User authentication interface with form validation
+ * Includes password visibility toggle and error handling
+ */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { User, Lock, Eye, EyeOff } from 'lucide-react';
