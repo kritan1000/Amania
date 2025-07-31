@@ -1,3 +1,9 @@
+/**
+ * Navigation Component
+ * Main navigation bar with user authentication and cart functionality
+ * Includes dropdown menus and responsive design
+ */
+
 import React, { use, useEffect } from 'react';
 import { ShoppingCart, User, Home, LogIn, Shirt } from 'lucide-react';
 import '../Styles/Navbar.css';
