@@ -15,5 +15,9 @@ export const addToCart = (product) => {
     updatedCartItems = [...cartItems, newItem];
   }
   localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  
+  // Show success message
+  alert(`${product.name} has been added to your cart!`);
+  
   return updatedCartItems;
 }

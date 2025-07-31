@@ -4,10 +4,9 @@
  * Includes dropdown menus and responsive design
  */
 
-import React, { use, useEffect } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { ShoppingCart, User, Home, LogIn, Shirt } from 'lucide-react';
 import '../Styles/Navbar.css';
-import { useState } from 'react';
 import { category } from '../utlis/axios';
 import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
@@ -15,11 +14,40 @@ import Cart from './Cart';
 const Navbar = ({ currentPage, onNavigate }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
- useEffect(() => {
+  
+  // Check authentication status on component mount
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const storedUser = localStorage.getItem("user");
+      const storedToken = localStorage.getItem("token");
+      
+      if (storedUser && storedToken) {
+        try {
+          const userData = JSON.parse(storedUser);
+          setUser(userData);
+          setIsLoggedIn(true);
+        } catch (error) {
+          // Invalid JSON in localStorage, clear it
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          setUser(null);
+          setIsLoggedIn(false);
+        }
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    };
+    
+    checkAuthStatus();
+  }, []);
+
+  useEffect(() => {
     const fetchCategories = async () => {
       try {
       const token = localStorage.getItem('token');
@@ -33,19 +61,22 @@ const Navbar = ({ currentPage, onNavigate }) => {
       }}
       fetchCategories();
   }, []);
-  const navigate =useNavigate();
   
-const onCartClear = () => {
+  const navigate = useNavigate();
+  
+  const onCartClear = () => {
     setCartModalOpen(false);
     localStorage.removeItem("cartItems");
     window.location.reload(); // or use onNavigate('home')
   }
+  
   const onCartOpen = () => {
     const items = JSON.parse(localStorage.getItem("cartItems")) || [];
     console.log("Cart items:", items);
     setCartItems(items);
     setCartModalOpen(true);
   }
+  
   const oncloseCart = () => {
     setCartModalOpen(false);
   }
@@ -53,6 +84,8 @@ const onCartClear = () => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+    setUser(null);
+    setIsLoggedIn(false);
     setUserModalOpen(false);
     window.location.reload(); // or use onNavigate('home')
   };
@@ -112,7 +145,7 @@ const onCartClear = () => {
               )}
             </li>
             {/* End Categories Dropdown */}
-            {!user ? (
+            {!isLoggedIn ? (
               <>
                 <li>
                   <button 
@@ -137,13 +170,13 @@ const onCartClear = () => {
               <li>
                 <button className="nav-link" onClick={() => setUserModalOpen(true)}>
                   <User size={18} />
-                  {user.fullname || user.firstName}
+                  {user?.fullname || user?.firstName}
                 </button>
                 {userModalOpen && (
                   <div className="user-modal">
                     <div >
-                      <strong>{user.fullname || `${user.firstName} ${user.lastName}`}</strong>
-                      <div>{user.email}</div>
+                      <strong>{user?.fullname || `${user?.firstName} ${user?.lastName}`}</strong>
+                      <div>{user?.email}</div>
                     </div>
                     <button className="btn btn-outline"  onClick={handleLogout}>Logout</button>
                     <button className="btn btn-outline"  onClick={() => setUserModalOpen(false)}>Close</button>

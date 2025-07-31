@@ -9,13 +9,16 @@ import axios from 'axios';
 import { User, Lock, Eye, EyeOff } from 'lucide-react';
 import '../styles/Login.css';
 import { auth } from '../utlis/axios';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onNavigate }) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -35,7 +38,7 @@ const Login = ({ onNavigate }) => {
         email: data.email,
       }));
       localStorage.setItem("token", data.token);
-      onNavigate('home');
+      navigate('/'); // Navigate to home page
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         alert(error.response.data.message);
@@ -103,7 +106,7 @@ const Login = ({ onNavigate }) => {
             <p>Don't have an account?</p>
             <button 
               className="btn btn-outline"
-              onClick={() => onNavigate('signup')}
+              onClick={() => navigate('/signup')}
             >
               Create Account
             </button>

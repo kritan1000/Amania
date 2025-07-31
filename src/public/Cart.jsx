@@ -1,8 +1,25 @@
 import React from 'react';
 import '../styles/Cart.css';
 
-function Cart({ cartItems, clearCart,closeCart }) {
+function Cart({ cartItems, clearCart, closeCart }) {
   console.log(cartItems);
+  
+  // Calculate total
+  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  const handleCheckout = () => {
+    // Check if user is logged in
+    const user = localStorage.getItem('user');
+    if (!user) {
+      alert('Please login to proceed with checkout');
+      closeCart();
+      return;
+    }
+    
+    // Here you would typically redirect to a checkout page
+    alert('Proceeding to checkout...');
+    closeCart();
+  };
   
   return (
     <section className="cart">
@@ -21,7 +38,13 @@ function Cart({ cartItems, clearCart,closeCart }) {
               </span>
             </div>
           ))}
-          <button onClick={clearCart}>Clear Cart</button>
+          <div className="cart-total">
+            <h3>Total: ${total.toFixed(2)}</h3>
+          </div>
+          <div className="cart-actions">
+            <button onClick={clearCart} className="clear-cart-btn">Clear Cart</button>
+            <button onClick={handleCheckout} className="checkout-btn">Proceed to Checkout</button>
+          </div>
         </div>
       )}
     </section>
