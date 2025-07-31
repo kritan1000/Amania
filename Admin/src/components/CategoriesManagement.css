@@ -1,3 +1,9 @@
+/**
+ * Categories Management CSS Styles
+ * Form layout for adding categories and grid display
+ * Responsive design with card-based category display
+ */
+
 .categories-container {
   padding: 2rem;
   background: #f8f9fa;
