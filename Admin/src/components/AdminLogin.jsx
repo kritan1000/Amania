@@ -1,3 +1,9 @@
+/**
+ * Admin Login Component
+ * Provides secure authentication interface for admin users
+ * with classic CSS styling matching the main site design
+ */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { User, Lock, Eye, EyeOff } from 'lucide-react';
