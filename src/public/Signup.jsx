@@ -9,8 +9,9 @@ import axios from 'axios';
 import { User, Lock, Eye, EyeOff, Mail, Phone } from 'lucide-react';
 import '../Styles/Signup.css';
 import { auth } from '../utlis/axios';
+import { useNavigate } from 'react-router-dom';
 
-const Signup = ({ onNavigate }) => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,6 +22,7 @@ const Signup = ({ onNavigate }) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -37,15 +39,25 @@ const Signup = ({ onNavigate }) => {
       alert('Passwords do not match!');
       return;
     }
+
+    if (formData.password.length < 6) {
+      alert('Password must be at least 6 characters long!');
+      return;
+    }
+    
     try {
-      const res = await auth.post('/register', {data:formData});
+      const res = await auth.post('/register', { data: formData });
       if(res.status === 201) {
-        alert('Registration successful!');
-        onNavigate('login');
+        alert('Registration successful! Please login.');
+        navigate('/login');
       }
     } catch (error) {
-     alert('Registration failed. Please try again.');
-      console.error('Registration error:', error); 
+      console.error('Registration error:', error);
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message);
+      } else {
+        alert('Registration failed. Please try again.');
+      }
     }
   };
 
@@ -180,7 +192,7 @@ const Signup = ({ onNavigate }) => {
             <p>Already have an account?</p>
             <button 
               className="btn btn-outline"
-              onClick={() => onNavigate('login')}
+              onClick={() => navigate('/login')}
             >
               Sign In
             </button>

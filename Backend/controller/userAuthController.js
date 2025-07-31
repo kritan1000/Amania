@@ -36,37 +36,58 @@ const sendOtp = async (req, res) => {
 const saltRounds = 10;
 
 const register = async (req, res) => {
-  const { firstName, lastName, email, password, phone } = req.body.data;
+  try {
+    const { firstName, lastName, email, password, phone } = req.body.data;
 
-  if (
-    firstName == null ||
-    lastName == null ||
-    email == null ||
-    password == null ||
-    phone == null
-  ) {
-    return res
-      .status(500)
-      .json({ message: "Please provide all the required filed" });
-  }
-  let user = await User.findOne({ where: { email } });
-  if (user != null) {
-    return res.status(500).json({ message: "User already exits" });
-  }
-  bcrypt.hash(password, saltRounds, async (err, hash) => {
-    if (err) {
-      console.log("Error hashing password", err);
-    } else {
-      await User.create({
-        firstName,
-        lastName,
-        email,
-        password: hash,
-        contact: phone,
-      });
-      return res.status(201).json({ message: "User registered successfully" });
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !password ||
+      !phone
+    ) {
+      return res
+        .status(400)
+        .json({ message: "Please provide all the required fields" });
     }
-  });
+
+    // Check if user already exists
+    let user = await User.findOne({ where: { email } });
+    if (user != null) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    // Convert phone to number and validate
+    const phoneNumber = parseInt(phone.replace(/\D/g, ''));
+    if (isNaN(phoneNumber) || phoneNumber.toString().length < 10) {
+      return res.status(400).json({ message: "Please provide a valid phone number" });
+    }
+
+    // Hash password
+    bcrypt.hash(password, saltRounds, async (err, hash) => {
+      if (err) {
+        console.log("Error hashing password", err);
+        return res.status(500).json({ message: "Error creating account" });
+      } else {
+        try {
+          await User.create({
+            firstName,
+            lastName,
+            email,
+            password: hash,
+            contact: phoneNumber,
+          });
+          return res.status(201).json({ message: "User registered successfully" });
+        } catch (error) {
+          console.error("Database error:", error);
+          return res.status(500).json({ message: "Error creating account" });
+        }
+      }
+    });
+  } catch (error) {
+    console.error("Registration error:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
 };
 
 const login = async (req, res) => {
