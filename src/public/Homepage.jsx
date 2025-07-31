@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react';
+/**
+ * Homepage Component
+ * Main landing page with category display and product showcase
+ * Features responsive design and category navigation
+ */
+
+import React, { useState, useEffect } from 'react';
 import { Star, Truck, CreditCard, Shield } from 'lucide-react';
 import '../Styles/Homepage.css';
 import { category, products } from '../utlis/axios';
