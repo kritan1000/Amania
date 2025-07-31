@@ -1,6 +1,11 @@
-const { Pool } = require('pg');
-const {Sequelize} = require('sequelize');
-const dotenv = require('dotenv');
+/**
+ * Database Configuration
+ * Sequelize setup for PostgreSQL connection
+ * Handles database connection and synchronization
+ */
+
+const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
 const db = new Sequelize('postgres', 'postgres', 'admin123', {
   host: 'localhost',
