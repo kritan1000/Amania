@@ -1,5 +1,12 @@
+/**
+ * Homepage CSS Styles
+ * Landing page styling with hero section and category display
+ * Features responsive design and modern layout
+ */
+
 .homepage {
   min-height: 100vh;
+  background-color: #f5f3f0;
 }
 
 /* Hero Section */
