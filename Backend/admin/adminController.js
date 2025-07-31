@@ -1,3 +1,9 @@
+/**
+ * Admin Controller
+ * Handles all admin-related operations including authentication,
+ * category management, and product management
+ */
+
 const Admin = require("../model/adminModel");
 const Product = require("../model/productModel");
 const Category = require("../model/categoryModel");
