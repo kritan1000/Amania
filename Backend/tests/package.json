@@ -1,0 +1,30 @@
+{
+  "name": "amania-backend-tests",
+  "version": "1.0.0",
+  "description": "Backend tests for Amania Clothing Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:auth": "jest auth.test.js",
+    "test:products": "jest products.test.js",
+    "test:categories": "jest categories.test.js",
+    "test:admin": "jest admin.test.js",
+    "test:users": "jest users.test.js",
+    "test:cart": "jest cart.test.js"
+  },
+  "dependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.8"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": ["<rootDir>/setup.js"],
+    "testTimeout": 10000
+  }
+} 
